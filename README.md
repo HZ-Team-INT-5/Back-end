@@ -8,5 +8,4 @@ Clone the repo and use npm install
 port 3000
 
 # Routes
-/free will be redirected to google
-/premium will be redirected to google
+/api/data will request data from the calender
