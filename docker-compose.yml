@@ -1,6 +1,7 @@
 version: '2'
 services:
   api-gateway:
+    container_name: api-gateway
     build:
       context: ./api-gateway
       dockerfile: Dockerfile
@@ -10,8 +11,11 @@ services:
       - courses
     volumes:
       - ./api-gateway:/app
+    networks:
+      - backend
 
   courses:
+    container_name: courses
     build:
       context: ./courses
       dockerfile: Dockerfile
@@ -19,3 +23,9 @@ services:
       - "3001:3001"
     volumes:
       - ./courses:/app
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

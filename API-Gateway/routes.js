@@ -26,7 +26,15 @@ const ROUTES = [
                 [`^/premium`]: '',
             },
         }
-    }
+    },
+    {
+        url: '/courses',
+        proxy: {
+            target: 'http://courses:3001',
+            changeOrigin: true,
+            timeout: 60000
+        }
+    },
 ]
 
 exports.ROUTES = ROUTES;
