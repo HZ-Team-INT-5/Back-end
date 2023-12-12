@@ -8,6 +8,8 @@ services:
       - "3000:3000"
     depends_on:
       - courses
+    volumes:
+      - ./api-gateway:/app
 
   courses:
     build:
@@ -15,4 +17,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
-
+    volumes:
+      - ./courses:/app
