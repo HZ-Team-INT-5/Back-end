@@ -1,10 +1,18 @@
-version: '1'
+version: '2'
 services:
-  backend:
+  api-gateway:
     build:
-      context: .
+      context: ./api-gateway
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
+    depends_on:
+      - courses
+
+  courses:
+    build:
+      context: ./courses
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+
