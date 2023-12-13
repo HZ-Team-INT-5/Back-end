@@ -4,9 +4,8 @@ const cors = require('cors');
 const port = process.env.PORT || 3002;
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Hello, this is your Express microservice!');
-});
+const routes = require('./routes');
+app.use('/', routes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

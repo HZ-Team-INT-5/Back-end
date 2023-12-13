@@ -3,20 +3,21 @@ const router = express.Router();
 
 const supabase = require('./db');
 
-router.get('/courses', async (req, res) => {
-  try {
-    
-    const { data, error } = await supabase.from('courses').select('*');
-    
-    if (error) {
-      throw error;
-    }
+router.get('/get-events', async (req, res) => {
+    try {
+        const { data, error } = await supabase
+            .from('calendarevents')
+            .select('*');
 
-    res.json(data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+        if (error) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+
+        return res.status(200).json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
 module.exports = router;
