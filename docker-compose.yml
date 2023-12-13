@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   api-gateway:
     container_name: api-gateway
@@ -11,6 +11,18 @@ services:
       - courses
     volumes:
       - ./api-gateway:/app
+    networks:
+      - backend
+
+  calendar:
+    container_name: calendar
+    build:
+      context: ./calendar
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./calendar:/app
     networks:
       - backend
 
