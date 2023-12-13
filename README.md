@@ -1,19 +1,30 @@
-# Back-end
-Repository for all microservices
+# Microservices Repository
 
-# Set-up
-Clone the repo and run docker compose. All the back-end is running in docker containers.
+This repository contains all the microservices for the back-end.
 
-# Installation if working locally
-Clone the repo and move to the folder you want to work on. Once you are in the folder run npm install to install the npm packages of that microservices.
+## Setup
 
-# Other services
-The repository of the HZ-planner is the frontend. The Database is hosted on supabase.
+Clone the repository and run Docker Compose. All back-end services run in Docker containers.
 
-# Current ports
-port 3000 - API Gateway
-port 3001 - Courses
+## Local Development Installation
 
-# Routes
-/api/data will request data from the calender
-/courses will request data from the course table
+1. Clone the repository.
+2. Navigate to the desired working folder.
+3. Run `npm install` to install the npm packages for the specific microservice.
+
+## Associated Services
+
+- The [HZ-planner repository](https://github.com/example/hz-planner) is dedicated to the front-end.
+- The database is hosted on [Supabase](https://supabase.io/).
+
+## Current Ports
+
+- Port 3000: API Gateway
+- Port 3001: Courses
+- Port 3002: Calendar
+
+## Routes
+
+- `/api/data`: Test the API Gateway
+- `/courses`: Request data from the course table
+- `/get-events`: Fetch important dates for the calendar
