@@ -20,7 +20,7 @@ RUN npm install @supabase/supabase-js
 COPY . .
 
 # Expose the port the app runs on
-EXPOSE 3002
+EXPOSE 3003
 
 # Define the command to run your app
 CMD ["node", "index.js"]

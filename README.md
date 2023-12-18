@@ -22,6 +22,7 @@ Clone the repository and run Docker Compose. All back-end services run in Docker
 - Port 3000: API Gateway
 - Port 3001: Courses
 - Port 3002: Calendar
+- Port 3003: Authorisation
 
 ## Routes
 
