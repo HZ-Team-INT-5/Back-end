@@ -43,6 +43,14 @@ const ROUTES = [
             timeout: 60000
         }
     }
+    {
+        url: '/add-events',
+        proxy: {
+            target: 'http://calendar:3002',
+            changeOrigin: true,
+            timeout: 60000
+        }
+    }
 ]
 
 exports.ROUTES = ROUTES;
