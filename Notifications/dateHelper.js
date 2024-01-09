@@ -1,4 +1,19 @@
+function SupabaseToJsDate(supabaseDateString) {
+    //const supabaseDateString = '2024-01-08 10:44:25.821526+00';
+
+    // Remove the microseconds part (since JavaScript's Date doesn't support microsecond precision)
+    const formattedDateString = supabaseDateString.replace(/\.\d+/, '');
+
+    // Parse the formatted date string using JavaScript's Date
+    const jsDate = new Date(formattedDateString);
+
+    return jsDate;
+    // Now you can work with the JavaScript Date object
+    //console.log(jsDate.toISOString());
+}
+
 function getTimeDif(date) {
+
     let returnString = '';
     const now = new Date();
     const difference = now - date;
@@ -58,8 +73,10 @@ function getTimeDif(date) {
     return returnString;
 }
 
-const currentDate = new Date();
-const thirtySecondsAgo = new Date(currentDate - ((0 + (365 * 4)) * 24 * 60 * 60 * 1000));
+module.exports = { getTimeDif, SupabaseToJsDate };
+
+//const currentDate = new Date();
+//const thirtySecondsAgo = new Date(currentDate - ((0 + (365 * 4)) * 24 * 60 * 60 * 1000));
 // const thirtySecondsAgo = new Date(currentDate - ((60 + 59) * 1000));
 
-console.log(getTimeDif(thirtySecondsAgo));
+//console.log(getTimeDif(thirtySecondsAgo));
