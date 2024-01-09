@@ -39,4 +39,25 @@ router.post('/add-events', async (req, res) => {
   }
 });
 
+router.put('/edit-event/:eventId', async (req, res) => {
+  try {
+    const eventId = req.params.eventId; 
+    const { data, error } = await supabase
+      .from('calendarevents')
+      .update(req.body)
+      .match({ id: eventId }) 
+      .select();
+
+    if (error) {
+      console.error('Error updating event:', error);
+      res.status(500).json({ error: 'Failed to update event', detailedError: error });
+    } else {
+      res.status(200).json({ success: true, data });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 module.exports = router;
