@@ -42,6 +42,14 @@ const ROUTES = [
             changeOrigin: true,
             timeout: 60000
         }
+    },
+    {
+        url: '/post-login',
+        proxy: {
+            target: 'http://authorisation:3003',
+            changeOrigin: true,
+            timeout: 60000
+        }
     }
 ]
 

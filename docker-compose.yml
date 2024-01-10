@@ -38,6 +38,21 @@ services:
     networks:
       - backend
 
+  authorisation:
+    container_name: authorisation
+    build:
+      context: ./authorisation
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    depends_on:
+      - courses
+    volumes:
+      - ./authorisation:/app
+    networks:
+      - backend
+
+
 networks:
   backend:
     driver: bridge
