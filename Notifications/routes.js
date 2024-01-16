@@ -71,5 +71,22 @@ router.put('/notifications/:userId', async(req, res) => {
     }
 });
 
+router.delete('/notifications/:userId', async(req, res) => {
+    try {
+        const { data, error } = await supabase
+            .from('notifications')
+            .delete()
+            .eq('id', req.params.userId);
+        if (error) {
+            throw error;
+        }
+
+        return res.status(200).json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' })
+    }
+})
+
 
 module.exports = router;
