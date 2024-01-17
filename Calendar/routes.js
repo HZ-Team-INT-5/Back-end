@@ -3,7 +3,7 @@ const router = express.Router();
 
 const supabase = require('./db');
 
-router.get('/get-events', async (req, res) => {
+router.get('/events', async (req, res) => {
   try {
     const { data, error } = await supabase
       .from('calendarevents')
@@ -20,12 +20,11 @@ router.get('/get-events', async (req, res) => {
   }
 });
 
-router.post('/add-events', async (req, res) => {
+router.post('/events', async (req, res) => {
   try {
     const { data, error } = await supabase
       .from('calendarevents')
       .upsert(req.body);
-
 
     if (error) {
       console.error('Error while inserting data:', error);
@@ -39,7 +38,7 @@ router.post('/add-events', async (req, res) => {
   }
 });
 
-router.put('/edit-event/:eventId', async (req, res) => {
+router.put('/events/:eventId', async (req, res) => {
   try {
     const eventId = req.params.eventId;
     const { data, error } = await supabase
@@ -60,7 +59,7 @@ router.put('/edit-event/:eventId', async (req, res) => {
   }
 });
 
-router.delete('/delete-event/:eventId', async(req, res) => {
+router.delete('/events/:eventId', async(req, res) => {
   try {
     const eventId = req.params.eventId;
     const { error } = await supabase
