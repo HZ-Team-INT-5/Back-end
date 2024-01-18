@@ -16,21 +16,26 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Install dependencies for API-Gateway
-      run: cd API-Gateway && npm install
+      run: npm install
+      working-directory: API-Gateway
+
+    - name: Install dependencies for Authorisation
+      run: npm install
+      working-directory: Authorisation
 
     - name: Install dependencies for Calendar
-      run: cd Calendar && npm install
+      run: npm install
+      working-directory: Calendar
 
     - name: Install dependencies for Courses
-      run: cd Courses && npm install
-
-    - name: Navigate back to the root directory
-      run: cd ..
+      run: npm install
+      working-directory: Courses
 
     - name: Build and run Docker Compose
       run: |
         docker-compose up -d --build
         docker-compose exec your-service-name your-command
+      working-directory: path/to/your/docker-compose.yml
 
   cleanup:
     runs-on: ubuntu-latest
@@ -38,3 +43,4 @@ jobs:
     steps:
     - name: Stop and remove containers
       run: docker-compose down
+      working-directory: path/to/your/docker-compose.yml
