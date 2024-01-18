@@ -27,11 +27,49 @@ jobs:
       run: npm install
       working-directory: Courses
 
+    
+It seems there might be some confusion regarding the working directory in your workflow. The working-directory option is used to set the working directory for the individual commands within the workflow steps, not for the entire job. Let's make the necessary adjustments:
+
+yaml
+Copy code
+name: Docker Compose CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies for API-Gateway
+      run: npm install
+      working-directory: API-Gateway
+
+    - name: Install dependencies for Authorisation
+      run: npm install
+      working-directory: Authorisation
+
+    - name: Install dependencies for Calendar
+      run: npm install
+      working-directory: Calendar
+
+    - name: Install dependencies for Courses
+      run: npm install
+      working-directory: Courses
+
+    - name: Navigate to the root directory
+      run: cd ..
+
     - name: Build and run Docker Compose
-      run: |
-        docker-compose up -d --build
-        docker-compose exec your-service-name your-command
-      working-directory: path/to/your/docker-compose.yml
+      run: docker-compose up -d --build
 
   cleanup:
     runs-on: ubuntu-latest
@@ -39,4 +77,3 @@ jobs:
     steps:
     - name: Stop and remove containers
       run: docker-compose down
-      working-directory: path/to/your/docker-compose.yml
