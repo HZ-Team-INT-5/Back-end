@@ -18,9 +18,6 @@ jobs:
     - name: Install dependencies for API-Gateway
       run: cd API-Gateway && npm install
 
-    - name: Install dependencies for Authorisation
-      run: cd Authorisation && npm install
-
     - name: Install dependencies for Calendar
       run: cd Calendar && npm install
 
