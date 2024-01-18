@@ -38,6 +38,20 @@ services:
     networks:
       - backend
 
+  notifications:
+    container_name: notifications
+    build:
+      context: ./notifications
+      dockerfile: Dockerfile
+    ports:
+      - "3004:3004"
+    volumes:
+      - ./notifications:/app
+    networks:
+      - backend
+      
 networks:
   backend:
     driver: bridge
+
+
