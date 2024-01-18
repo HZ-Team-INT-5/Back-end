@@ -24,6 +24,9 @@ jobs:
     - name: Install dependencies for Courses
       run: cd Courses && npm install
 
+    - name: Navigate back to the root directory
+      run: cd ..
+
     - name: Build and run Docker Compose
       run: |
         docker-compose up -d --build
