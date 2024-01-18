@@ -22,7 +22,7 @@ router.get('/notifications/:userId', async(req, res) => {
             .from('notifications')
             .select('*')
             .eq('user_id', req.params.userId)
-            .order('created_at', { ascending: true });
+            .order('created_at', { ascending: false });
 
 
         if (error) {
