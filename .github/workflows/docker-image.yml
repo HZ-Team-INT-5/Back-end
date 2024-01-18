@@ -19,10 +19,6 @@ jobs:
       run: npm install
       working-directory: API-Gateway
 
-    - name: Install dependencies for Authorisation
-      run: npm install
-      working-directory: Authorisation
-
     - name: Install dependencies for Calendar
       run: npm install
       working-directory: Calendar
