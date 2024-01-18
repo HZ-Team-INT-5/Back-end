@@ -1,5 +1,4 @@
-const ROUTES = [
-    {
+const ROUTES = [{
         url: '/free',
         auth: false,
         creditCheck: false,
@@ -36,9 +35,17 @@ const ROUTES = [
         }
     },
     {
-        url: '/get-events',
+        url: '/events',
         proxy: {
             target: 'http://calendar:3002',
+            changeOrigin: true,
+            timeout: 60000
+        }
+    },
+    {
+        url: '/notifications',
+        proxy: {
+            target: 'http://notifications:3004',
             changeOrigin: true,
             timeout: 60000
         }
