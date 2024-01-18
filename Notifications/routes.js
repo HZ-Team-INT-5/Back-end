@@ -1,4 +1,4 @@
-const { getTimeDif, SupabaseToJsDate } = require('./dateHelper');
+const { getTimeDif } = require('./dateHelper');
 
 const express = require('express');
 const router = express.Router();
@@ -9,7 +9,6 @@ const supabase = require('./db');
 function processNotificationData(data) {
 
     data.forEach(element => {
-        element.creationTime = SupabaseToJsDate(element.created_at);
         element.timeElapsed = getTimeDif(new Date(element.created_at));
     });
 
@@ -22,7 +21,9 @@ router.get('/notifications/:userId', async(req, res) => {
         const { data, error } = await supabase
             .from('notifications')
             .select('*')
-            .eq('user_id', req.params.userId);
+            .eq('user_id', req.params.userId)
+            .order('created_at', { ascending: true });
+
 
         if (error) {
             throw error;
