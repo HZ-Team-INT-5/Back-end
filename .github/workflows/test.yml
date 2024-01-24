@@ -20,6 +20,6 @@ jobs:
           node-version: "16"
 
       - name: Run tests for Notifications
-        run: cd Notifications
+        run: cd .\Notifications\
           npm install
           npm test
