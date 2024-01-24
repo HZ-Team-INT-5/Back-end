@@ -20,6 +20,7 @@ function getTimeDif(date) {
     }
     if (monthDiff < 0 && yearDiff >= 1) { //if date's month is ahead of current month but in a previous year, don't count month as negative but count backwards
         monthDiff += 12;
+        yearDiff -= 1;
     }
     if (yearDiff > 0 && monthDiff < 12 && dayDiff < 0) { // if year has not crossed over yet, don't count as full year yet
         yearDiff -= 1;

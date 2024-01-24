@@ -74,7 +74,52 @@ test('1 week ago', () => {
 });
 
 test('1 week ago + 1 second', () => {
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setTime(oneWeekAgo.getTime() - ((7 * 24 * 60 * 60 * 1000) + 1000));
-    expect(getTimeDif(oneWeekAgo)).toBe('1 week ago');
+    const oneWeekOneSecondAgo = new Date();
+    oneWeekOneSecondAgo.setTime(oneWeekOneSecondAgo.getTime() - ((7 * 24 * 60 * 60 * 1000) + 1000));
+    expect(getTimeDif(oneWeekOneSecondAgo)).toBe('1 week ago');
+});
+
+test('1 month ago', () => {
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+    expect(getTimeDif(oneMonthAgo)).toBe('1 month ago');
+});
+
+test('1 month ago + 1 second', () => {
+    const oneMonthOneSecondAgo = new Date();
+    oneMonthOneSecondAgo.setMonth(oneMonthOneSecondAgo.getMonth() - 1);
+    oneMonthOneSecondAgo.setTime(oneMonthOneSecondAgo.getTime() - (1 * 1000));
+
+
+    expect(getTimeDif(oneMonthOneSecondAgo)).toBe('1 month ago');
+});
+
+test('11 months ago', () => {
+    const elevenMonthsAgo = new Date();
+    elevenMonthsAgo.setMonth(elevenMonthsAgo.getMonth() - 11);
+
+    expect(getTimeDif(elevenMonthsAgo)).toBe('11 months ago');
+});
+
+test('1 year ago', () => {
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
+    expect(getTimeDif(oneYearAgo)).toBe('1 year ago');
+});
+
+test('1 year ago + 1 second', () => {
+    const oneYearOneSecondAgo = new Date();
+    oneYearOneSecondAgo.setFullYear(oneYearOneSecondAgo.getFullYear() - 1);
+    oneYearOneSecondAgo.setTime(oneYearOneSecondAgo.getTime() - (1 * 1000));
+
+    expect(getTimeDif(oneYearOneSecondAgo)).toBe('1 year ago');
+});
+
+test('10 years ago', () => {
+    const tenYearsAgo = new Date();
+    tenYearsAgo.setFullYear(tenYearsAgo.getFullYear() - 10);
+
+    expect(getTimeDif(tenYearsAgo)).toBe('10 years ago');
 });
