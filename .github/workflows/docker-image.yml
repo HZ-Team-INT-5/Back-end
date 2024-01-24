@@ -15,9 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install dependencies for API-Gateway
+    - name: Install dependencies for api-Gateway
       run: npm install
-      working-directory: API-gateway
+      working-directory: api-gateway
 
     - name: Install dependencies for Calendar
       run: npm install
