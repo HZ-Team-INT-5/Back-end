@@ -31,8 +31,15 @@ jobs:
     - name: Navigate to the root directory
       run: cd ..
 
+    - name: Debugging information before Docker Compose
+      run: |
+        ls -la
+        pwd
+        cd path/to/your/docker-compose-directory
+        ls -la
+
     - name: Build and run Docker Compose
-      run: docker-compose up -d --build
+      run: docker-compose -d --build
 
   cleanup:
     runs-on: ubuntu-latest
