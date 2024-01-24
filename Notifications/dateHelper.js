@@ -4,6 +4,13 @@ function getTimeDif(date) {
     const now = new Date();
     const difference = now - date;
 
+    if (!(date instanceof Date) || isNaN(date)) {
+        throw new TypeError('Invalid input: date must be a valid Date object.');
+    }
+
+    if (date >= now) {
+        throw new Error('Invalid input: date must be a time in the past.');
+    }
 
     const millisecondsInWeek = 7 * 24 * 60 * 60 * 1000;
     const millisecondsInDay = 24 * 60 * 60 * 1000;
