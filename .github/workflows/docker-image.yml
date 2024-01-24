@@ -37,7 +37,7 @@ jobs:
         pwd
 
     - name: Build and run Docker Compose
-      run: docker-compose up -d --build
+      run: docker-compose -f ./docker-compose.yml up -d --build
 
   cleanup:
     runs-on: ubuntu-latest
