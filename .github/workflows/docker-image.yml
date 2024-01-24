@@ -1,5 +1,3 @@
-name: Docker Compose CI
-
 on:
   push:
     branches: [ "main" ]
@@ -8,6 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
@@ -15,21 +14,20 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install dependencies for api-Gateway
+    - name: Install dependencies for API-Gateway
       run: npm install
-      working-directory: api-gateway
+      working-directory: API-Gateway
 
     - name: Install dependencies for Calendar
       run: npm install
-      working-directory: calendar
+      working-directory: Calendar
 
     - name: Install dependencies for Courses
       run: npm install
-      working-directory: courses
+      working-directory: Courses
 
-    - name: Install dependencies for Notification
-      run: npm install
-      working-directory: notification
+    - name: Navigate to the root directory
+      run: cd ..
 
     - name: Debugging information before Docker Compose
       run: |
