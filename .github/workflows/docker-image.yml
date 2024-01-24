@@ -8,7 +8,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   build:
 
     runs-on: ubuntu-latest
@@ -18,18 +17,19 @@ jobs:
 
     - name: Install dependencies for API-Gateway
       run: npm install
-      working-directory: API-Gateway
+      working-directory: API-gateway
 
     - name: Install dependencies for Calendar
       run: npm install
-      working-directory: Calendar
+      working-directory: calendar
 
     - name: Install dependencies for Courses
       run: npm install
-      working-directory: Courses
+      working-directory: courses
 
-    - name: Navigate to the root directory
-      run: cd ..
+    - name: Install dependencies for Notification
+      run: npm install
+      working-directory: notification
 
     - name: Debugging information before Docker Compose
       run: |
@@ -37,7 +37,7 @@ jobs:
         pwd
 
     - name: Build and run Docker Compose
-      run: docker-compose -f ./docker-compose.yml up -d --build
+      run: docker-compose up -d --build
 
   cleanup:
     runs-on: ubuntu-latest
@@ -45,3 +45,4 @@ jobs:
     steps:
     - name: Stop and remove containers
       run: docker-compose down
+
