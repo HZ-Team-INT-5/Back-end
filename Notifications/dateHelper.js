@@ -1,17 +1,3 @@
-function SupabaseToJsDate(supabaseDateString) {
-    //const supabaseDateString = '2024-01-08 10:44:25.821526+00';
-
-    // Remove the microseconds part (since JavaScript's Date doesn't support microsecond precision)
-    const formattedDateString = supabaseDateString.replace(/\.\d+/, '');
-
-    // Parse the formatted date string using JavaScript's Date
-    const jsDate = new Date(formattedDateString);
-
-    return jsDate;
-    // Now you can work with the JavaScript Date object
-    //console.log(jsDate.toISOString());
-}
-
 function getTimeDif(date) {
 
     let returnString = '';
@@ -56,7 +42,6 @@ function getTimeDif(date) {
         returnString = `${hoursDifference} hour`; // show dif in hours
     } else if (difference < millisecondsInWeek) { // else if dif < 1 week
         returnString = `${daysDifference} day`; // show dif in days
-        //NOTE: for code below, use other function because 1 month ago isn't always same
     } else if (monthDiff < 1 && yearDiff == 0) { // else if dif < 1 month
         returnString = `${weeksDifference} week`; // show dif in weeks
     } else if (yearDiff < 1) { // else if dif < 1 year
@@ -73,10 +58,4 @@ function getTimeDif(date) {
     return returnString;
 }
 
-module.exports = { getTimeDif, SupabaseToJsDate };
-
-//const currentDate = new Date();
-//const thirtySecondsAgo = new Date(currentDate - ((0 + (365 * 4)) * 24 * 60 * 60 * 1000));
-// const thirtySecondsAgo = new Date(currentDate - ((60 + 59) * 1000));
-
-//console.log(getTimeDif(thirtySecondsAgo));
+module.exports = { getTimeDif };
