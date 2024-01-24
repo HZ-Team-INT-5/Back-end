@@ -35,11 +35,9 @@ jobs:
       run: |
         ls -la
         pwd
-        cd path/to/your/docker-compose-directory
-        ls -la
 
     - name: Build and run Docker Compose
-      run: docker-compose -d --build
+      run: docker-compose up -d --build
 
   cleanup:
     runs-on: ubuntu-latest
