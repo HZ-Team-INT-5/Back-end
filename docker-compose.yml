@@ -1,9 +1,9 @@
 version: '3'
 services:
   api-gateway:
-    container_name: api-gateway
+    container_name: API-gateway
     build:
-      context: ./api-gateway
+      context: ./API-gateway
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
