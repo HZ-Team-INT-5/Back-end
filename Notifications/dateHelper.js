@@ -4,6 +4,13 @@ function getTimeDif(date) {
     const now = new Date();
     const difference = now - date;
 
+    if (!(date instanceof Date) || isNaN(date)) {
+        throw new TypeError('Invalid input: date must be a valid Date object.');
+    }
+
+    if (date >= now) {
+        throw new Error('Invalid input: date must be a time in the past.');
+    }
 
     const millisecondsInWeek = 7 * 24 * 60 * 60 * 1000;
     const millisecondsInDay = 24 * 60 * 60 * 1000;
@@ -20,6 +27,7 @@ function getTimeDif(date) {
     }
     if (monthDiff < 0 && yearDiff >= 1) { //if date's month is ahead of current month but in a previous year, don't count month as negative but count backwards
         monthDiff += 12;
+        yearDiff -= 1;
     }
     if (yearDiff > 0 && monthDiff < 12 && dayDiff < 0) { // if year has not crossed over yet, don't count as full year yet
         yearDiff -= 1;
