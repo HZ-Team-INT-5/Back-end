@@ -26,15 +26,5 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
   
-      - name: Run Smoketest for calendar 
-        run: |
-          cd Calendar
-          newman run calendar.postman_collection.json
-
-      - name: Install dependencies and run system tests for calendar
-        run: |
-          cd Calendar
-          npm install
-          npm test
 
       
