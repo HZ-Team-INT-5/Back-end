@@ -130,7 +130,7 @@ test('10 years ago', () => {
     expect(getTimeDif(tenYearsAgo)).toBe('10 years ago');
 });
 
-test('invalid date object', () => {
+test('Invalid date object throws TypeError', () => {
     const invalidDate = new Date('invalidDateString');
     const t = () => {
         getTimeDif(invalidDate);
@@ -138,7 +138,7 @@ test('invalid date object', () => {
     expect(t).toThrow(TypeError);
 })
 
-test('not a date object', () => {
+test('Non-date objects throw TypeError', () => {
     const notADate = '2023-12-31T23:59:59Z';
     const t = () => {
         getTimeDif(notADate);
@@ -146,7 +146,7 @@ test('not a date object', () => {
     expect(t).toThrow(TypeError);
 })
 
-test('date in the future', () => {
+test('Date in  future throws error', () => {
     const future = new Date();
 
     future.setTime(future.getTime() + (1));
